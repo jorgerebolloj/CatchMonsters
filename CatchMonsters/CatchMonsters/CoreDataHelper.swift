@@ -43,6 +43,7 @@ func getAllTheMonsters() -> [Monster] {
             createInitialMonsterDeck()
             return getAllTheMonsters()
         }
+        return monsters
     } catch {
         print("Ha habido un error al recuperar los monstruos desde CoreData")
     }
