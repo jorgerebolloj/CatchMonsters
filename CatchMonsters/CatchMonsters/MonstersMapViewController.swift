@@ -15,6 +15,7 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate {
     var manager = CLLocationManager()
     var updateLocationCount = 0
     let mapDistance: CLLocationDistance = 300
+    var monsterSpawnTimer: TimeInterval = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,16 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             canvasMapView.showsUserLocation = true
             manager.startUpdatingLocation()
+            
+            Timer.scheduledTimer(withTimeInterval: monsterSpawnTimer, repeats: true, block: { (timer) in
+                if let coordinate = self.manager.location?.coordinate {
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    annotation.coordinate.latitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
+                    annotation.coordinate.longitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
+                    self.canvasMapView.addAnnotation(annotation)
+                }
+            })
         } else {
             manager.requestWhenInUseAuthorization()
         }
@@ -47,8 +58,8 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func userLocation() {
-        if (manager.location?.coordinate) != nil {
-            let region = MKCoordinateRegionMakeWithDistance(manager.location!.coordinate, mapDistance, mapDistance)
+        if let coordinate = self.manager.location?.coordinate {
+            let region = MKCoordinateRegionMakeWithDistance(coordinate, mapDistance, mapDistance)
             canvasMapView.setRegion(region, animated: true)
         }
     }
