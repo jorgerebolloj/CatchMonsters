@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MonstersMapViewController: UIViewController, CLLocationManagerDelegate {
+class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var canvasMapView: MKMapView!
 
     var manager = CLLocationManager()
@@ -28,8 +28,9 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate {
             
             Timer.scheduledTimer(withTimeInterval: monsterSpawnTimer, repeats: true, block: { (timer) in
                 if let coordinate = self.manager.location?.coordinate {
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = coordinate
+                    let randomPosition = Int(arc4random_uniform(UInt32(self.monsters.count)))
+                    let randomMonster = self.monsters[randomPosition]
+                    let annotation = MonsterAnnotation(coordinate: coordinate, monster: randomMonster)
                     annotation.coordinate.latitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
                     annotation.coordinate.longitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
                     self.canvasMapView.addAnnotation(annotation)
@@ -53,6 +54,22 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             manager.stopUpdatingLocation()
         }
+    }
+    
+    // MARK: MapViewDelegate
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        if annotation is MKUserLocation {
+            annotationView.image = #imageLiteral(resourceName: "ninja")
+        } else {
+            let monster = (annotation as! MonsterAnnotation).monster
+            annotationView.image = UIImage(named: monster.imageFileName!)
+        }
+        var newFrame = annotationView.frame
+        newFrame.size.height = 40
+        newFrame.size.width = 40
+        annotationView.frame = newFrame
+        return annotationView
     }
     
     @IBAction func updateUserLocationAction(_ sender: UIButton) {
