@@ -14,6 +14,7 @@
 		3037E29B1EE9D6E000EAA366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3037E29A1EE9D6E000EAA366 /* Assets.xcassets */; };
 		3037E29E1EE9D6E000EAA366 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3037E29C1EE9D6E000EAA366 /* LaunchScreen.storyboard */; };
 		3037E2A71EE9D7DE00EAA366 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3037E2A61EE9D7DE00EAA366 /* MapKit.framework */; };
+		3037E2A91EE9EABB00EAA366 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2A81EE9EABB00EAA366 /* CollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3037E29D1EE9D6E000EAA366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3037E29F1EE9D6E000EAA366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3037E2A61EE9D7DE00EAA366 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3037E2A81EE9EABB00EAA366 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				3037E2901EE9D6DF00EAA366 /* AppDelegate.swift */,
 				3037E2921EE9D6DF00EAA366 /* MonstersMapViewController.swift */,
+				3037E2A81EE9EABB00EAA366 /* CollectionViewController.swift */,
 				3037E2941EE9D6E000EAA366 /* Main.storyboard */,
 				3037E29A1EE9D6E000EAA366 /* Assets.xcassets */,
 				3037E29C1EE9D6E000EAA366 /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3037E2A91EE9EABB00EAA366 /* CollectionViewController.swift in Sources */,
 				3037E2991EE9D6E000EAA366 /* CatchMonsters.xcdatamodeld in Sources */,
 				3037E2931EE9D6DF00EAA366 /* MonstersMapViewController.swift in Sources */,
 				3037E2911EE9D6DF00EAA366 /* AppDelegate.swift in Sources */,

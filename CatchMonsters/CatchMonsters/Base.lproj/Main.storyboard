@@ -36,6 +36,17 @@
                                     <action selector="updateUserLocationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OLd-0Y-0sJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJl-RO-khC">
+                                <rect key="frame" x="162" y="597" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3TT-te-74v"/>
+                                    <constraint firstAttribute="width" constant="50" id="gt2-OM-LvG"/>
+                                </constraints>
+                                <state key="normal" image="checkList"/>
+                                <connections>
+                                    <segue destination="ygi-1O-Fy3" kind="presentation" id="JEL-zr-IyA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -43,6 +54,8 @@
                             <constraint firstItem="ytz-2g-8Wa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CvL-O8-ZYA"/>
                             <constraint firstAttribute="trailing" secondItem="ytz-2g-8Wa" secondAttribute="trailing" id="DcD-i0-MLM"/>
                             <constraint firstItem="ch9-Aw-2Yf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="I4t-iD-QAo"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SJl-RO-khC" secondAttribute="bottom" constant="20" id="KH9-nR-rIx"/>
+                            <constraint firstItem="SJl-RO-khC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TIW-6G-BWR"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ytz-2g-8Wa" secondAttribute="bottom" id="sXe-lH-MIV"/>
                             <constraint firstItem="ytz-2g-8Wa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uGX-v6-GPx"/>
                         </constraints>
@@ -54,8 +67,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="Y6x-Td-AGm">
+            <objects>
+                <viewController id="ygi-1O-Fy3" customClass="CollectionViewController" customModule="CatchMonsters" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zcI-Wq-OlI"/>
+                        <viewControllerLayoutGuide type="bottom" id="pLP-Lq-FrP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Vf-eh-ssY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4vj-EC-SKM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23O-Nr-1ti">
+                                <rect key="frame" x="162.5" y="597" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Fqr-xE-4b1"/>
+                                    <constraint firstAttribute="width" constant="50" id="eJc-Nz-ZK5"/>
+                                </constraints>
+                                <state key="normal" image="locationMap"/>
+                                <connections>
+                                    <action selector="backToMapLocationAction:" destination="ygi-1O-Fy3" eventType="touchUpInside" id="tT6-6s-qph"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4vj-EC-SKM" secondAttribute="trailing" id="5RJ-Jg-q2z"/>
+                            <constraint firstItem="4vj-EC-SKM" firstAttribute="leading" secondItem="7Vf-eh-ssY" secondAttribute="leading" id="Mve-V1-Xcb"/>
+                            <constraint firstItem="4vj-EC-SKM" firstAttribute="top" secondItem="zcI-Wq-OlI" secondAttribute="bottom" id="Wb0-4V-6bh"/>
+                            <constraint firstItem="pLP-Lq-FrP" firstAttribute="top" secondItem="23O-Nr-1ti" secondAttribute="bottom" constant="20" id="csA-qf-s9Z"/>
+                            <constraint firstItem="pLP-Lq-FrP" firstAttribute="top" secondItem="4vj-EC-SKM" secondAttribute="bottom" id="oWx-fY-hfw"/>
+                            <constraint firstItem="23O-Nr-1ti" firstAttribute="centerX" secondItem="7Vf-eh-ssY" secondAttribute="centerX" id="q6y-WQ-aeV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3t8-xO-b17" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817" y="37"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CatchMonstersCompass" width="512" height="512"/>
+        <image name="checkList" width="128" height="128"/>
+        <image name="locationMap" width="256" height="256"/>
     </resources>
 </document>
