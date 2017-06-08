@@ -16,10 +16,12 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate {
     var updateLocationCount = 0
     let mapDistance: CLLocationDistance = 300
     var monsterSpawnTimer: TimeInterval = 5
+    var monsters : [Monster] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         manager.delegate = self
+        monsters = getAllTheMonsters()
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             canvasMapView.showsUserLocation = true
             manager.startUpdatingLocation()
