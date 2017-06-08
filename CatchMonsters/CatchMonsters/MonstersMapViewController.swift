@@ -9,12 +9,21 @@
 import UIKit
 import MapKit
 
-class MonstersMapViewController: UIViewController {
+class MonstersMapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var canvasMapView: MKMapView!
 
+    var manager = CLLocationManager()
+    var updateLocationCount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        manager.delegate = self
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            canvasMapView.showsUserLocation = true
+            manager.startUpdatingLocation()
+        } else {
+            manager.requestWhenInUseAuthorization()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +31,15 @@ class MonstersMapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    // MARK: CLLocationManagerDelegate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if updateLocationCount < 4 {
+            let region = MKCoordinateRegionMakeWithDistance(manager.location!.coordinate, 1000, 1000)
+            canvasMapView.setRegion(region, animated: true)
+            updateLocationCount += 1
+        } else {
+            manager.stopUpdatingLocation()
+        }
+    }
 }
 
