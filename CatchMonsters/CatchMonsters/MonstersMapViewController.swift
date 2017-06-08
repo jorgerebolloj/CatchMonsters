@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MonstersMapViewController.swift
 //  CatchMonsters
 //
 //  Created by Jorge Rebollo Jimenez on 08/06/17.
@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class MonstersMapViewController: UIViewController {
+    @IBOutlet weak var canvasMapView: MKMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		3037E2911EE9D6DF00EAA366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2901EE9D6DF00EAA366 /* AppDelegate.swift */; };
-		3037E2931EE9D6DF00EAA366 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2921EE9D6DF00EAA366 /* ViewController.swift */; };
+		3037E2931EE9D6DF00EAA366 /* MonstersMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2921EE9D6DF00EAA366 /* MonstersMapViewController.swift */; };
 		3037E2961EE9D6E000EAA366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3037E2941EE9D6E000EAA366 /* Main.storyboard */; };
 		3037E2991EE9D6E000EAA366 /* CatchMonsters.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2971EE9D6E000EAA366 /* CatchMonsters.xcdatamodeld */; };
 		3037E29B1EE9D6E000EAA366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3037E29A1EE9D6E000EAA366 /* Assets.xcassets */; };
 		3037E29E1EE9D6E000EAA366 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3037E29C1EE9D6E000EAA366 /* LaunchScreen.storyboard */; };
+		3037E2A71EE9D7DE00EAA366 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3037E2A61EE9D7DE00EAA366 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3037E28D1EE9D6DF00EAA366 /* CatchMonsters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatchMonsters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3037E2901EE9D6DF00EAA366 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3037E2921EE9D6DF00EAA366 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3037E2921EE9D6DF00EAA366 /* MonstersMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonstersMapViewController.swift; sourceTree = "<group>"; };
 		3037E2951EE9D6E000EAA366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3037E2981EE9D6E000EAA366 /* CatchMonsters.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CatchMonsters.xcdatamodel; sourceTree = "<group>"; };
 		3037E29A1EE9D6E000EAA366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3037E29D1EE9D6E000EAA366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3037E29F1EE9D6E000EAA366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3037E2A61EE9D7DE00EAA366 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3037E2A71EE9D7DE00EAA366 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				3037E28F1EE9D6DF00EAA366 /* CatchMonsters */,
 				3037E28E1EE9D6DF00EAA366 /* Products */,
+				3037E2A51EE9D7DE00EAA366 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				3037E2901EE9D6DF00EAA366 /* AppDelegate.swift */,
-				3037E2921EE9D6DF00EAA366 /* ViewController.swift */,
+				3037E2921EE9D6DF00EAA366 /* MonstersMapViewController.swift */,
 				3037E2941EE9D6E000EAA366 /* Main.storyboard */,
 				3037E29A1EE9D6E000EAA366 /* Assets.xcassets */,
 				3037E29C1EE9D6E000EAA366 /* LaunchScreen.storyboard */,
@@ -65,6 +69,14 @@
 				3037E2971EE9D6E000EAA366 /* CatchMonsters.xcdatamodeld */,
 			);
 			path = CatchMonsters;
+			sourceTree = "<group>";
+		};
+		3037E2A51EE9D7DE00EAA366 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3037E2A61EE9D7DE00EAA366 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3037E2991EE9D6E000EAA366 /* CatchMonsters.xcdatamodeld in Sources */,
-				3037E2931EE9D6DF00EAA366 /* ViewController.swift in Sources */,
+				3037E2931EE9D6DF00EAA366 /* MonstersMapViewController.swift in Sources */,
 				3037E2911EE9D6DF00EAA366 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
