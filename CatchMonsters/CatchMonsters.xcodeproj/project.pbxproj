@@ -16,6 +16,7 @@
 		3037E2A71EE9D7DE00EAA366 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3037E2A61EE9D7DE00EAA366 /* MapKit.framework */; };
 		3037E2A91EE9EABB00EAA366 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2A81EE9EABB00EAA366 /* CollectionViewController.swift */; };
 		3037E2AB1EE9EF0B00EAA366 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2AA1EE9EF0B00EAA366 /* CoreDataHelper.swift */; };
+		3037E2AD1EEA03A400EAA366 /* MonsterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2AC1EEA03A400EAA366 /* MonsterTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3037E2A61EE9D7DE00EAA366 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3037E2A81EE9EABB00EAA366 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		3037E2AA1EE9EF0B00EAA366 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		3037E2AC1EEA03A400EAA366 /* MonsterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				3037E2921EE9D6DF00EAA366 /* MonstersMapViewController.swift */,
 				3037E2A81EE9EABB00EAA366 /* CollectionViewController.swift */,
 				3037E2AA1EE9EF0B00EAA366 /* CoreDataHelper.swift */,
+				3037E2AC1EEA03A400EAA366 /* MonsterTableViewCell.swift */,
 				3037E2941EE9D6E000EAA366 /* Main.storyboard */,
 				3037E29A1EE9D6E000EAA366 /* Assets.xcassets */,
 				3037E29C1EE9D6E000EAA366 /* LaunchScreen.storyboard */,
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3037E2AD1EEA03A400EAA366 /* MonsterTableViewCell.swift in Sources */,
 				3037E2AB1EE9EF0B00EAA366 /* CoreDataHelper.swift in Sources */,
 				3037E2A91EE9EABB00EAA366 /* CollectionViewController.swift in Sources */,
 				3037E2991EE9D6E000EAA366 /* CatchMonsters.xcdatamodeld in Sources */,

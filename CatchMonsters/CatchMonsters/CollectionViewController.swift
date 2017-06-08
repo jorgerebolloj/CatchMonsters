@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController {
+class CollectionViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var collectionTableView: UITableView!
     
     var caughtMonsters: [Monster] = []
@@ -30,14 +30,40 @@ class CollectionViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
-    */
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Atrapados"
+        } else {
+            return "No atrapados"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return caughtMonsters.count
+        } else {
+            return uncaughtMonsters.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MonsterCell", for: indexPath) as! MonsterTableViewCell
+        var monster: Monster
+        if indexPath.section == 0 {
+            monster = caughtMonsters[indexPath.row]
+            cell.monsterTimesCaught.text = "Atrapados: \(monster.timesCaught)"
+        } else {
+            monster = uncaughtMonsters[indexPath.row]
+            cell.monsterTimesCaught.text = ""
+        }
+        cell.monsterNameLabel?.text = monster.name
+        cell.monsterImageView?.image = UIImage(named: monster.imageFileName!)
+        cell.monsterLevel?.text =  "Nivel: \(String(monster.level))"
+        return cell
+    }
 
 }
