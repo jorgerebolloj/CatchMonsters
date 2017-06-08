@@ -17,6 +17,7 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
     let mapDistance: CLLocationDistance = 300
     var monsterSpawnTimer: TimeInterval = 5
     var monsters : [Monster] = []
+    let captureDistance: CLLocationDistance = 150
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,22 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
         newFrame.size.width = 40
         annotationView.frame = newFrame
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapView.deselectAnnotation(view.annotation!, animated: false)
+        if view.annotation! is MKUserLocation {
+            return
+        }
+        let region = MKCoordinateRegionMakeWithDistance(view.annotation!.coordinate, captureDistance, captureDistance)
+        canvasMapView.setRegion(region, animated: true)
+        if let coordinate = manager.location?.coordinate {
+            if MKMapRectContainsPoint(mapView.visibleMapRect, MKMapPointForCoordinate(coordinate)) {
+                print("Podemos atrapar el monster")
+            } else {
+                print("No podemos atrapar el onster")
+            }
+        }
     }
     
     @IBAction func updateUserLocationAction(_ sender: UIButton) {
