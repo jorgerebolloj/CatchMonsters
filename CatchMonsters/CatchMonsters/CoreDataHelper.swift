@@ -21,6 +21,8 @@ func createInitialMonsterDeck() {
     createMonster(name: "Monster9", imageNamed: "monster9", occurrenceLevel: "common", catchingDifficulty: "easy")
     createMonster(name: "Monster10", imageNamed: "monster10", occurrenceLevel: "common", catchingDifficulty: "easy")
     createMonster(name: "Monster11", imageNamed: "monster11", occurrenceLevel: "common", catchingDifficulty: "easy")
+    
+    (UIApplication.shared.delegate as! AppDelegate).saveContext()
 }
 
 func createMonster(name: String, imageNamed: String, occurrenceLevel: String, catchingDifficulty: String) {
@@ -40,6 +42,32 @@ func getAllTheMonsters() -> [Monster] {
             createInitialMonsterDeck()
             return getAllTheMonsters()
         }
+    } catch {
+        print("Ha habido un error al recuperar los monstruos desde CoreData")
+    }
+    return []
+}
+
+func getAllCaughtMonsters() -> [Monster] {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let fetchRequest = Monster.fetchRequest() as NSFetchRequest<Monster>
+    fetchRequest.predicate = NSPredicate(format: "timesCaught < %d", 0)
+    do {
+        let monsters = try context.fetch(fetchRequest) as [Monster]
+        return monsters
+    } catch {
+        print("Ha habido un error al recuperar los monstruos desde CoreData")
+    }
+    return []
+}
+
+func getAllUncaughtMonsters() -> [Monster] {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let fetchRequest = Monster.fetchRequest() as NSFetchRequest<Monster>
+    fetchRequest.predicate = NSPredicate(format: "timesCaught == %d", 0)
+    do {
+        let monsters = try context.fetch(fetchRequest) as [Monster]
+        return monsters
     } catch {
         print("Ha habido un error al recuperar los monstruos desde CoreData")
     }

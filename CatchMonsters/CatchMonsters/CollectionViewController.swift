@@ -10,11 +10,15 @@ import UIKit
 
 class CollectionViewController: UIViewController {
     @IBOutlet weak var collectionTableView: UITableView!
+    
+    var caughtMonsters: [Monster] = []
+    var uncaughtMonsters: [Monster] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        caughtMonsters = getAllCaughtMonsters()
+        uncaughtMonsters = getAllUncaughtMonsters()
     }
 
     override func didReceiveMemoryWarning() {
