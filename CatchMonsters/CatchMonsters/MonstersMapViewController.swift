@@ -27,7 +27,7 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
         manager.delegate = self
         monsters = getAllTheMonsters()
         for monster in monsters {
-            totalFrequency += Int(monster.occurrenceLevel!)!
+            totalFrequency += Int(monster.frequency)
         }
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             setupMap()

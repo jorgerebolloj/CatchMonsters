@@ -11,17 +11,17 @@ import CoreData
 
 func createInitialMonsterDeck() {
     createMonster(name: "Gommy", imageNamed: "monster1", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
-    createMonster(name: "Greenny", imageNamed: "monster2", occurrenceLevel: "Medio", catchingDifficulty: "Fácil", level: 1, frequency: 80)
     createMonster(name: "Bluemmy", imageNamed: "monster3", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
-    createMonster(name: "Blakky", imageNamed: "monster4", occurrenceLevel: "Difícil", catchingDifficulty: "Fácil", level: 1, frequency: 60)
-    createMonster(name: "Snownny", imageNamed: "monster5", occurrenceLevel: "Muy raro", catchingDifficulty: "Fácil", level: 1, frequency: 10)
     createMonster(name: "Oranggy", imageNamed: "monster6", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
     createMonster(name: "Lizzy", imageNamed: "monster7", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
-    createMonster(name: "Gatty", imageNamed: "monster8", occurrenceLevel: "Raro", catchingDifficulty: "Fácil", level: 1, frequency: 40)
     createMonster(name: "Snakky", imageNamed: "monster9", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
     createMonster(name: "Octty", imageNamed: "monster10", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
+    createMonster(name: "Greyyi", imageNamed: "monster12", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
+    createMonster(name: "Greenny", imageNamed: "monster2", occurrenceLevel: "Medio", catchingDifficulty: "Fácil", level: 1, frequency: 80)
+    createMonster(name: "Blakky", imageNamed: "monster4", occurrenceLevel: "Difícil", catchingDifficulty: "Fácil", level: 1, frequency: 60)
+    createMonster(name: "Snownny", imageNamed: "monster5", occurrenceLevel: "Muy raro", catchingDifficulty: "Fácil", level: 1, frequency: 10)
+    createMonster(name: "Gatty", imageNamed: "monster8", occurrenceLevel: "Raro", catchingDifficulty: "Fácil", level: 1, frequency: 40)
     createMonster(name: "Sukky", imageNamed: "monster11", occurrenceLevel: "Super raro", catchingDifficulty: "Fácil", level: 1, frequency: 1)
-    createMonster(name: "Sukky", imageNamed: "monster11", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
     
     (UIApplication.shared.delegate as! AppDelegate).saveContext()
 }
