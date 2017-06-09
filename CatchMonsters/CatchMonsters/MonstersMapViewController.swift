@@ -19,29 +19,14 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
     var monsterCleanTimer: TimeInterval = 30
     var monsters : [Monster] = []
     let captureDistance: CLLocationDistance = 50
+    var hasStartedTheMap = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         manager.delegate = self
         monsters = getAllTheMonsters()
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            canvasMapView.showsUserLocation = true
-            manager.startUpdatingLocation()
-            
-            Timer.scheduledTimer(withTimeInterval: monsterSpawnTimer, repeats: true, block: { (timer) in
-                if let coordinate = self.manager.location?.coordinate {
-                    let randomPosition = Int(arc4random_uniform(UInt32(self.monsters.count)))
-                    let randomMonster = self.monsters[randomPosition]
-                    let annotation = MonsterAnnotation(coordinate: coordinate, monster: randomMonster)
-                    annotation.coordinate.latitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
-                    annotation.coordinate.longitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
-                    self.canvasMapView.addAnnotation(annotation)
-                }
-            })
-            Timer.scheduledTimer(withTimeInterval: monsterCleanTimer, repeats: true, block: { (timer) in
-                let allAnnotations = self.canvasMapView.annotations
-                self.canvasMapView.removeAnnotations(allAnnotations)
-            })
+            setupMap()
         } else {
             manager.requestWhenInUseAuthorization()
         }
@@ -59,6 +44,35 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
             updateLocationCount += 1
         } else {
             manager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            setupMap()
+        }
+    }
+    
+    func setupMap() {
+        if !hasStartedTheMap {
+            hasStartedTheMap = true
+            canvasMapView.showsUserLocation = true
+            manager.startUpdatingLocation()
+            
+            Timer.scheduledTimer(withTimeInterval: monsterSpawnTimer, repeats: true, block: { (timer) in
+                if let coordinate = self.manager.location?.coordinate {
+                    let randomPosition = Int(arc4random_uniform(UInt32(self.monsters.count)))
+                    let randomMonster = self.monsters[randomPosition]
+                    let annotation = MonsterAnnotation(coordinate: coordinate, monster: randomMonster)
+                    annotation.coordinate.latitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
+                    annotation.coordinate.longitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
+                    self.canvasMapView.addAnnotation(annotation)
+                }
+            })
+            Timer.scheduledTimer(withTimeInterval: monsterCleanTimer, repeats: true, block: { (timer) in
+                let allAnnotations = self.canvasMapView.annotations
+                self.canvasMapView.removeAnnotations(allAnnotations)
+            })
         }
     }
     
