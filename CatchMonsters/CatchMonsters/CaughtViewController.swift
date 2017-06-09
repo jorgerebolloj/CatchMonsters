@@ -19,8 +19,8 @@ class CaughtViewController: UIViewController {
         self.view = SKView()
         
         let skView = self.view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         skView.ignoresSiblingOrder = false
         
         scene.scaleMode = .aspectFill
