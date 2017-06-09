@@ -18,6 +18,8 @@
 		3037E2AB1EE9EF0B00EAA366 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2AA1EE9EF0B00EAA366 /* CoreDataHelper.swift */; };
 		3037E2AD1EEA03A400EAA366 /* MonsterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2AC1EEA03A400EAA366 /* MonsterTableViewCell.swift */; };
 		3037E2AF1EEA0B6100EAA366 /* MonsterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2AE1EEA0B6100EAA366 /* MonsterAnnotation.swift */; };
+		3037E2B31EEA40BC00EAA366 /* CaughtScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2B21EEA40BC00EAA366 /* CaughtScene.swift */; };
+		3037E2B51EEA416A00EAA366 /* CaughtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037E2B41EEA416A00EAA366 /* CaughtViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		3037E2AA1EE9EF0B00EAA366 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		3037E2AC1EEA03A400EAA366 /* MonsterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterTableViewCell.swift; sourceTree = "<group>"; };
 		3037E2AE1EEA0B6100EAA366 /* MonsterAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterAnnotation.swift; sourceTree = "<group>"; };
+		3037E2B21EEA40BC00EAA366 /* CaughtScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaughtScene.swift; path = ../CaughtScene.swift; sourceTree = "<group>"; };
+		3037E2B41EEA416A00EAA366 /* CaughtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaughtViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 				3037E2AA1EE9EF0B00EAA366 /* CoreDataHelper.swift */,
 				3037E2AC1EEA03A400EAA366 /* MonsterTableViewCell.swift */,
 				3037E2AE1EEA0B6100EAA366 /* MonsterAnnotation.swift */,
+				3037E2B41EEA416A00EAA366 /* CaughtViewController.swift */,
+				3037E2B21EEA40BC00EAA366 /* CaughtScene.swift */,
 				3037E2941EE9D6E000EAA366 /* Main.storyboard */,
 				3037E29A1EE9D6E000EAA366 /* Assets.xcassets */,
 				3037E29C1EE9D6E000EAA366 /* LaunchScreen.storyboard */,
@@ -170,6 +176,8 @@
 				3037E2991EE9D6E000EAA366 /* CatchMonsters.xcdatamodeld in Sources */,
 				3037E2931EE9D6DF00EAA366 /* MonstersMapViewController.swift in Sources */,
 				3037E2AF1EEA0B6100EAA366 /* MonsterAnnotation.swift in Sources */,
+				3037E2B31EEA40BC00EAA366 /* CaughtScene.swift in Sources */,
+				3037E2B51EEA416A00EAA366 /* CaughtViewController.swift in Sources */,
 				3037E2911EE9D6DF00EAA366 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

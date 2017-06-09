@@ -83,6 +83,9 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
         if let coordinate = manager.location?.coordinate {
             if MKMapRectContainsPoint(mapView.visibleMapRect, MKMapPointForCoordinate(coordinate)) {
                 print("Podemos atrapar el monster")
+                let caughtViewController = CaughtViewController()
+                caughtViewController.monster = (view.annotation! as! MonsterAnnotation).monster
+                present(caughtViewController, animated: true, completion: nil)
             } else {
                 print("No podemos atrapar el onster")
             }
