@@ -55,14 +55,15 @@ class CollectionViewController: UIViewController, UITableViewDataSource {
         var monster: Monster
         if indexPath.section == 0 {
             monster = caughtMonsters[indexPath.row]
-            cell.monsterTimesCaught.text = "Atrapados: \(monster.timesCaught)"
+            cell.monsterTimesCaughtLabel.text = "Atrapados: \(monster.timesCaught)"
         } else {
             monster = uncaughtMonsters[indexPath.row]
-            cell.monsterTimesCaught.text = ""
+            cell.monsterTimesCaughtLabel.text = ""
         }
         cell.monsterNameLabel?.text = monster.name
         cell.monsterImageView?.image = UIImage(named: monster.imageFileName!)
-        cell.monsterLevel?.text =  "Nivel: \(String(monster.level))"
+        cell.monsterLevelLabel?.text =  "Nivel: \(String(monster.level))"
+        cell.monsterOccurrenceLevelLabel?.text =  "Rareza: \(String(describing: String(monster.occurrenceLevel!)))"
         return cell
     }
 

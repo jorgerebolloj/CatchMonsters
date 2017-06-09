@@ -100,26 +100,37 @@
                                                         <constraint firstAttribute="width" constant="64" id="D3m-Qx-4Zd"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dvz-96-2en">
-                                                    <rect key="frame" x="80" y="8" width="279" height="55.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-oc-Ekq">
+                                                    <rect key="frame" x="80" y="8" width="287" height="63.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monster Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwJ-Fj-WYh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="279" height="22"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="Mpv-1H-8GS">
-                                                            <rect key="frame" x="0.0" y="34" width="279" height="21.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dPb-ub-mJ0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="143.5" height="63.5"/>
                                                             <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Monster Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwJ-Fj-WYh">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="43"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atrapados" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7e-kV-sra">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="21.5"/>
+                                                                    <rect key="frame" x="0.0" y="43" width="78" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="t7a-jY-d2Z">
+                                                            <rect key="frame" x="143.5" y="0.0" width="143.5" height="63.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Rareza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAt-sv-n2j">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="143.5" height="43"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nivel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZa-mE-Gzp">
-                                                                    <rect key="frame" x="156.5" y="0.0" width="122.5" height="21.5"/>
+                                                                    <rect key="frame" x="0.0" y="43" width="143.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -130,20 +141,21 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="dvz-96-2en" secondAttribute="bottom" constant="8" id="Hr9-ro-OcK"/>
+                                                <constraint firstItem="DTY-oc-Ekq" firstAttribute="leading" secondItem="48C-Cq-hMK" secondAttribute="trailing" constant="8" id="C5c-th-PPm"/>
                                                 <constraint firstItem="48C-Cq-hMK" firstAttribute="bottom" secondItem="ZYf-n7-8v3" secondAttribute="bottomMargin" id="RY8-aQ-5GX"/>
-                                                <constraint firstItem="dvz-96-2en" firstAttribute="leading" secondItem="48C-Cq-hMK" secondAttribute="trailing" constant="8" id="lPK-Mi-VBu"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="dvz-96-2en" secondAttribute="trailing" constant="8" id="lQB-ol-aFX"/>
+                                                <constraint firstItem="DTY-oc-Ekq" firstAttribute="top" secondItem="ZYf-n7-8v3" secondAttribute="topMargin" id="hra-ag-VO8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DTY-oc-Ekq" secondAttribute="trailing" id="kaF-k6-r8R"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="DTY-oc-Ekq" secondAttribute="bottom" id="kwJ-bj-dps"/>
                                                 <constraint firstItem="48C-Cq-hMK" firstAttribute="top" secondItem="ZYf-n7-8v3" secondAttribute="topMargin" id="mEz-dG-23L"/>
-                                                <constraint firstItem="dvz-96-2en" firstAttribute="top" secondItem="ZYf-n7-8v3" secondAttribute="topMargin" id="ng9-cH-JcE"/>
                                                 <constraint firstItem="48C-Cq-hMK" firstAttribute="leading" secondItem="ZYf-n7-8v3" secondAttribute="leadingMargin" id="pps-Ks-Q0t"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="monsterImageView" destination="48C-Cq-hMK" id="0e8-Mr-Jla"/>
-                                            <outlet property="monsterLevel" destination="pZa-mE-Gzp" id="Pzt-Ey-eRG"/>
+                                            <outlet property="monsterLevelLabel" destination="pZa-mE-Gzp" id="L5B-om-Xs2"/>
                                             <outlet property="monsterNameLabel" destination="FwJ-Fj-WYh" id="SFr-Bk-cNQ"/>
-                                            <outlet property="monsterTimesCaught" destination="C7e-kV-sra" id="aaw-Bq-Wtb"/>
+                                            <outlet property="monsterOccurrenceLevelLabel" destination="hAt-sv-n2j" id="wfg-Sk-6ah"/>
+                                            <outlet property="monsterTimesCaughtLabel" destination="C7e-kV-sra" id="l5K-kI-6Ef"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

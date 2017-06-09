@@ -11,8 +11,9 @@ import UIKit
 class MonsterTableViewCell: UITableViewCell {
     @IBOutlet weak var monsterImageView: UIImageView!
     @IBOutlet weak var monsterNameLabel: UILabel!
-    @IBOutlet weak var monsterTimesCaught: UILabel!
-    @IBOutlet weak var monsterLevel: UILabel!
+    @IBOutlet weak var monsterTimesCaughtLabel: UILabel!
+    @IBOutlet weak var monsterLevelLabel: UILabel!
+    @IBOutlet weak var monsterOccurrenceLevelLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

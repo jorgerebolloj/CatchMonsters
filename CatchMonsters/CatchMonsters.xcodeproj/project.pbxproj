@@ -74,8 +74,8 @@
 			children = (
 				3037E2901EE9D6DF00EAA366 /* AppDelegate.swift */,
 				3037E2921EE9D6DF00EAA366 /* MonstersMapViewController.swift */,
-				3037E2A81EE9EABB00EAA366 /* CollectionViewController.swift */,
 				3037E2AA1EE9EF0B00EAA366 /* CoreDataHelper.swift */,
+				3037E2A81EE9EABB00EAA366 /* CollectionViewController.swift */,
 				3037E2AC1EEA03A400EAA366 /* MonsterTableViewCell.swift */,
 				3037E2AE1EEA0B6100EAA366 /* MonsterAnnotation.swift */,
 				3037E2B41EEA416A00EAA366 /* CaughtViewController.swift */,

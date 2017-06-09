@@ -156,7 +156,7 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         if monsterCaught {
             monster.timesCaught += 1
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            showMessage(messageString: "¡Atrapado!")
+            showMessage(messageString: "¡Atrapaste un \(monster.name!)!")
         } else {
             showMessage(messageString: "¡El \(monster.name!) escapó!")
         }

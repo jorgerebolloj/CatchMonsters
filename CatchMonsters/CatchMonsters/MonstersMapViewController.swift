@@ -20,11 +20,15 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
     var monsters : [Monster] = []
     let captureDistance: CLLocationDistance = 50
     var hasStartedTheMap = false
+    var totalFrequency = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         manager.delegate = self
         monsters = getAllTheMonsters()
+        for monster in monsters {
+            totalFrequency += Int(monster.occurrenceLevel!)!
+        }
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             setupMap()
         } else {
@@ -61,8 +65,16 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
             
             Timer.scheduledTimer(withTimeInterval: monsterSpawnTimer, repeats: true, block: { (timer) in
                 if let coordinate = self.manager.location?.coordinate {
-                    let randomPosition = Int(arc4random_uniform(UInt32(self.monsters.count)))
-                    let randomMonster = self.monsters[randomPosition]
+                    let randomFrequencyNumber = Int(arc4random_uniform(UInt32(self.totalFrequency)))
+                    var monsterFrequencyAccumulation = 0
+                    var randomMonster: Monster = self.monsters[0]
+                    for monster in self.monsters {
+                        randomMonster = monster
+                        monsterFrequencyAccumulation += Int(randomMonster.frequency)
+                        if monsterFrequencyAccumulation >= randomFrequencyNumber {
+                            break
+                        }
+                    }
                     let annotation = MonsterAnnotation(coordinate: coordinate, monster: randomMonster)
                     annotation.coordinate.latitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
                     annotation.coordinate.longitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
