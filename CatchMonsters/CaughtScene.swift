@@ -27,9 +27,10 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
     var canThrowWeb = false
     var monsterCaught = false
     var startCount = true
-    var maxTime = 30
-    var myTime = 30
+    var maxTime = 10
+    var myTime = 10
     var printTime = SKLabelNode(fontNamed: "System")
+    let message = SKLabelNode(fontNamed: "System")
     
     override func didMove(to view: SKView) {
         let backgroundImage = SKSpriteNode(imageNamed: "background")
@@ -40,7 +41,7 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         addChild(backgroundImage)
         printTime.position = CGPoint(x: self.size.width/2, y: self.size.height*0.9)
         addChild(printTime)
-        showMessage(messageString: "¡Atrapado!")
+        showMessage(messageString: "¡Atrápalo ahora!")
         perform(#selector(setupMonster), with: nil, afterDelay: 1.0)
         perform(#selector(setupWeb), with: nil, afterDelay: 1.0)
         physicsBody = SKPhysicsBody(edgeLoopFrom:self.frame)
@@ -153,15 +154,14 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         if monsterCaught {
             showMessage(messageString: "¡Atrapado!")
         } else {
-            showMessage(messageString: "¡Escapó el monstruo!")
+            showMessage(messageString: "¡El monstruo escapó!")
         }
         perform(#selector(endCaugth), with: nil, afterDelay: 1.0)
     }
     
     func showMessage(messageString: String) {
-        let message = SKLabelNode(fontNamed: "System")
         message.text = messageString
-        printTime.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        message.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         addChild(message)
         message.run(SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.removeFromParent()]))
     }
