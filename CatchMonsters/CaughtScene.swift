@@ -15,6 +15,7 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
     var webSprite: SKNode!
     let kMonsterSize: CGSize = CGSize(width: 128, height: 128)
     let kMonsterName: String = "monster"
+    let kWebSize: CGSize = CGSize(width: 200, height: 200)
     let kWebName: String = "web"
     let monsterMoveDistance = 150.0
     let monsterMovePixelsPerSecond = 70.0
@@ -50,7 +51,7 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         monsterSprite = createMonster()
         monsterSprite.position =  CGPoint(x: self.size.width/2, y: self.size.height/2 + 150)
         
-        monsterSprite.physicsBody = SKPhysicsBody(circleOfRadius: monsterSprite.frame.size.width/2)
+        monsterSprite.physicsBody = SKPhysicsBody(circleOfRadius: monsterSprite.frame.size.width/3)
         monsterSprite.physicsBody!.isDynamic = false
         monsterSprite.physicsBody!.affectedByGravity = false
         monsterSprite.physicsBody!.mass = 1.0
@@ -67,7 +68,6 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
     
     func createWeb() -> SKNode {
         let webSprite = SKSpriteNode(imageNamed: "web")
-        let kWebSize: CGSize = CGSize(width: CGFloat(400/monster.level) , height: CGFloat(398/monster.level))
         webSprite.size = kWebSize
         webSprite.name = kWebName
         return webSprite
@@ -77,7 +77,8 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         webSprite = createWeb()
         webSprite.position =  CGPoint(x: self.size.width/2, y: 50)
         
-        webSprite.physicsBody = SKPhysicsBody(circleOfRadius: webSprite.frame.size.width/2)
+        let kWebLevelSize: CGSize = CGSize(width: CGFloat(webSprite.frame.size.width/CGFloat(monster.level)) , height: CGFloat(webSprite.frame.size.height/CGFloat(monster.level)))
+        webSprite.physicsBody = SKPhysicsBody(circleOfRadius: kWebLevelSize.width/3)
         webSprite.physicsBody!.isDynamic = true
         webSprite.physicsBody!.affectedByGravity = true
         webSprite.physicsBody!.mass = 0.3
