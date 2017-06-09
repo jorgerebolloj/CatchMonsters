@@ -16,6 +16,7 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
     var updateLocationCount = 0
     let mapDistance: CLLocationDistance = 300
     var monsterSpawnTimer: TimeInterval = 5
+    var monsterCleanTimer: TimeInterval = 30
     var monsters : [Monster] = []
     let captureDistance: CLLocationDistance = 50
     
@@ -36,6 +37,10 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
                     annotation.coordinate.longitude += (Double(arc4random_uniform(1000)) - 500.0) / 400000.0
                     self.canvasMapView.addAnnotation(annotation)
                 }
+            })
+            Timer.scheduledTimer(withTimeInterval: monsterCleanTimer, repeats: true, block: { (timer) in
+                let allAnnotations = self.canvasMapView.annotations
+                self.canvasMapView.removeAnnotations(allAnnotations)
             })
         } else {
             manager.requestWhenInUseAuthorization()
