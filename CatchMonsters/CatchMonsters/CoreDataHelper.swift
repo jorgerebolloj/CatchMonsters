@@ -19,8 +19,8 @@ func createInitialMonsterDeck() {
     createMonster(name: "Greyyi", imageNamed: "monster12", occurrenceLevel: "Común", catchingDifficulty: "Fácil", level: 1, frequency: 100)
     createMonster(name: "Greenny", imageNamed: "monster2", occurrenceLevel: "Medio", catchingDifficulty: "Fácil", level: 1, frequency: 80)
     createMonster(name: "Blakky", imageNamed: "monster4", occurrenceLevel: "Difícil", catchingDifficulty: "Fácil", level: 1, frequency: 60)
-    createMonster(name: "Snownny", imageNamed: "monster5", occurrenceLevel: "Muy raro", catchingDifficulty: "Fácil", level: 1, frequency: 10)
     createMonster(name: "Gatty", imageNamed: "monster8", occurrenceLevel: "Raro", catchingDifficulty: "Fácil", level: 1, frequency: 40)
+    createMonster(name: "Snownny", imageNamed: "monster5", occurrenceLevel: "Muy raro", catchingDifficulty: "Fácil", level: 1, frequency: 10)
     createMonster(name: "Sukky", imageNamed: "monster11", occurrenceLevel: "Super raro", catchingDifficulty: "Fácil", level: 1, frequency: 1)
     
     (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -55,6 +55,8 @@ func getAllTheMonsters() -> [Monster] {
 func getAllCaughtMonsters() -> [Monster] {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let fetchRequest = Monster.fetchRequest() as NSFetchRequest<Monster>
+    let sortDescriptor = NSSortDescriptor(key: "frequency", ascending: false, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
+    fetchRequest.sortDescriptors = [sortDescriptor]
     fetchRequest.predicate = NSPredicate(format: "timesCaught > %d", 0)
     do {
         let monsters = try context.fetch(fetchRequest) as [Monster]
@@ -68,6 +70,8 @@ func getAllCaughtMonsters() -> [Monster] {
 func getAllUncaughtMonsters() -> [Monster] {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let fetchRequest = Monster.fetchRequest() as NSFetchRequest<Monster>
+    let sortDescriptor = NSSortDescriptor(key: "frequency", ascending: false, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
+    fetchRequest.sortDescriptors = [sortDescriptor]
     fetchRequest.predicate = NSPredicate(format: "timesCaught == %d", 0)
     do {
         let monsters = try context.fetch(fetchRequest) as [Monster]
