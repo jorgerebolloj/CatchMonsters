@@ -14,7 +14,7 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
 
     var manager = CLLocationManager()
     var updateLocationCount = 0
-    let mapDistance: CLLocationDistance = 300
+    let mapDistance: CLLocationDistance = 200
     var monsterSpawnTimer: TimeInterval = 5
     var monsters : [Monster] = []
     let captureDistance: CLLocationDistance = 150
@@ -81,13 +81,18 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
         let region = MKCoordinateRegionMakeWithDistance(view.annotation!.coordinate, captureDistance, captureDistance)
         canvasMapView.setRegion(region, animated: true)
         if let coordinate = manager.location?.coordinate {
+            let monster = (view.annotation! as! MonsterAnnotation).monster
             if MKMapRectContainsPoint(mapView.visibleMapRect, MKMapPointForCoordinate(coordinate)) {
-                print("Podemos atrapar el monster")
                 let caughtViewController = CaughtViewController()
-                caughtViewController.monster = (view.annotation! as! MonsterAnnotation).monster
-                present(caughtViewController, animated: true, completion: nil)
+                caughtViewController.monster = monster
+                present(caughtViewController, animated: true, completion: { 
+                    mapView.removeAnnotation(view.annotation!)
+                })
             } else {
-                print("No podemos atrapar el onster")
+                let alertController = UIAlertController(title: "Fuera de alcance", message: "Acertcate a \(monster.name!) para atraparlo", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                present(alertController, animated: true, completion: nil)
             }
         }
     }

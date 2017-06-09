@@ -53,7 +53,7 @@ func getAllTheMonsters() -> [Monster] {
 func getAllCaughtMonsters() -> [Monster] {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let fetchRequest = Monster.fetchRequest() as NSFetchRequest<Monster>
-    fetchRequest.predicate = NSPredicate(format: "timesCaught < %d", 0)
+    fetchRequest.predicate = NSPredicate(format: "timesCaught > %d", 0)
     do {
         let monsters = try context.fetch(fetchRequest) as [Monster]
         return monsters

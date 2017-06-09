@@ -29,8 +29,7 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
     var startCount = true
     var maxTime = 10
     var myTime = 10
-    var printTime = SKLabelNode(fontNamed: "System")
-    let message = SKLabelNode(fontNamed: "System")
+    var printTime = SKLabelNode(fontNamed: "AvenirNext-Bold")
     
     override func didMove(to view: SKView) {
         let backgroundImage = SKSpriteNode(imageNamed: "background")
@@ -130,6 +129,7 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         switch contactMask {
         case kMonsterCategory|kWebCategory:
             monsterCaught = true
+            printTime.isHidden = true
             endGame()
         default:
             return
@@ -141,9 +141,11 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
             maxTime = Int(currentTime) + maxTime
             startCount = false
         }
-        myTime = maxTime - Int(currentTime)
-        printTime.text = "\(myTime)"
-        if myTime <= 0 {
+        if myTime > 0 {
+            myTime = maxTime - Int(currentTime)
+            printTime.text = "\(myTime)"
+        } else {
+            printTime.isHidden = true
             endGame()
         }
     }
@@ -152,14 +154,17 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         monsterSprite.removeFromParent()
         webSprite.removeFromParent()
         if monsterCaught {
+            monster.timesCaught += 1
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
             showMessage(messageString: "¡Atrapado!")
         } else {
-            showMessage(messageString: "¡El monstruo escapó!")
+            showMessage(messageString: "¡El \(monster.name!) escapó!")
         }
         perform(#selector(endCaugth), with: nil, afterDelay: 1.0)
     }
     
     func showMessage(messageString: String) {
+        let message = SKLabelNode(fontNamed: "AvenirNext-Bold")
         message.text = messageString
         message.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         addChild(message)
