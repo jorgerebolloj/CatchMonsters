@@ -25,6 +25,11 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
     var velocity: CGPoint = CGPoint.zero
     var touchPoint: CGPoint = CGPoint()
     var canThrowWeb = false
+    var monsterCaught = false
+    var startCount = true
+    var maxTime = 30
+    var myTime = 30
+    var printTime = SKLabelNode(fontNamed: "System")
     
     override func didMove(to view: SKView) {
         let backgroundImage = SKSpriteNode(imageNamed: "background")
@@ -33,6 +38,9 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         backgroundImage.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundImage.zPosition = -1
         addChild(backgroundImage)
+        printTime.position = CGPoint(x: self.size.width/2, y: self.size.height*0.9)
+        addChild(printTime)
+        showMessage(messageString: "¡Atrapado!")
         perform(#selector(setupMonster), with: nil, afterDelay: 1.0)
         perform(#selector(setupWeb), with: nil, afterDelay: 1.0)
         physicsBody = SKPhysicsBody(edgeLoopFrom:self.frame)
@@ -114,5 +122,51 @@ class CaughtScene: SKScene, SKPhysicsContactDelegate {
         let distance = CGVector(dx: touchPoint.x - webSprite.position.x, dy: touchPoint.y - webSprite.position.y)
         let velocity = CGVector(dx: distance.dx / differentialTime, dy: distance.dy / differentialTime)
         webSprite.physicsBody!.velocity = velocity
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        switch contactMask {
+        case kMonsterCategory|kWebCategory:
+            monsterCaught = true
+            endGame()
+        default:
+            return
+        }
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        if startCount {
+            maxTime = Int(currentTime) + maxTime
+            startCount = false
+        }
+        myTime = maxTime - Int(currentTime)
+        printTime.text = "\(myTime)"
+        if myTime <= 0 {
+            endGame()
+        }
+    }
+    
+    func endGame() {
+        monsterSprite.removeFromParent()
+        webSprite.removeFromParent()
+        if monsterCaught {
+            showMessage(messageString: "¡Atrapado!")
+        } else {
+            showMessage(messageString: "¡Escapó el monstruo!")
+        }
+        perform(#selector(endCaugth), with: nil, afterDelay: 1.0)
+    }
+    
+    func showMessage(messageString: String) {
+        let message = SKLabelNode(fontNamed: "System")
+        message.text = messageString
+        printTime.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        addChild(message)
+        message.run(SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.removeFromParent()]))
+    }
+    
+    func endCaugth() {
+        NotificationCenter.default.post(name: NSNotification.Name("closeCaught"), object: nil)
     }
 }

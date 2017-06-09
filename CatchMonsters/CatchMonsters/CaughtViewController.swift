@@ -27,6 +27,12 @@ class CaughtViewController: UIViewController {
         scene.monster = self.monster
         
         skView.presentScene(scene)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(returnToMapViewController), name: NSNotification.Name("closeCaught"), object: nil)
+    }
+    
+    func returnToMapViewController() {
+        dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
