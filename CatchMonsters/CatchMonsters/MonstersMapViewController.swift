@@ -14,10 +14,10 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
 
     var manager = CLLocationManager()
     var updateLocationCount = 0
-    let mapDistance: CLLocationDistance = 200
+    let mapDistance: CLLocationDistance = 300
     var monsterSpawnTimer: TimeInterval = 5
     var monsters : [Monster] = []
-    let captureDistance: CLLocationDistance = 150
+    let captureDistance: CLLocationDistance = 50
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,19 +74,19 @@ class MonstersMapViewController: UIViewController, CLLocationManagerDelegate, MK
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        mapView.deselectAnnotation(view.annotation!, animated: false)
+        mapView.deselectAnnotation(view.annotation!, animated: true)
         if view.annotation! is MKUserLocation {
             return
         }
         let region = MKCoordinateRegionMakeWithDistance(view.annotation!.coordinate, captureDistance, captureDistance)
-        canvasMapView.setRegion(region, animated: true)
-        if let coordinate = manager.location?.coordinate {
+        canvasMapView.setRegion(region, animated: false)
+        if let coordinate = self.manager.location?.coordinate {
             let monster = (view.annotation! as! MonsterAnnotation).monster
             if MKMapRectContainsPoint(mapView.visibleMapRect, MKMapPointForCoordinate(coordinate)) {
                 let caughtViewController = CaughtViewController()
                 caughtViewController.monster = monster
                 present(caughtViewController, animated: true, completion: { 
-                    mapView.removeAnnotation(view.annotation!)
+                    self.canvasMapView.removeAnnotation(view.annotation!)
                 })
             } else {
                 let alertController = UIAlertController(title: "Fuera de alcance", message: "Acertcate a \(monster.name!) para atraparlo", preferredStyle: .alert)
